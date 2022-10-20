@@ -1,7 +1,7 @@
 using System;
 using FluentValidation;
 
-namespace WebApi.BookOperations.GetById;
+namespace WebApi.Application.BookOperations.GetById;
 
 public class GetByIdQueryValidator : AbstractValidator<GetByIdQuery>
 {

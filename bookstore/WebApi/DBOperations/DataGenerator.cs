@@ -1,5 +1,8 @@
 using System;
 using Microsoft.EntityFrameworkCore;
+using WebApi.Entities;
+using System.Linq;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace WebApi.DBOperations;
 
@@ -13,6 +16,46 @@ public class DataGenerator
             {
                 return;
             }
+
+            context.Authors.AddRange(
+                new Author 
+                {
+                    Name = "Franz",
+                    LastName = "Kafka",
+                    DateOfBirth = new DateTime(1999,06,07),
+                    BookId = 1
+
+                
+                },
+                new Author 
+                {
+                    Name = "Thomas",
+                    LastName = "Müller",
+                    DateOfBirth = new DateTime(1999,11,24),
+                    BookId = 2
+                    
+                },
+                new Author 
+                {
+                    Name = "Lisa",
+                    LastName = "Mayer",
+                    DateOfBirth = new DateTime(1999,10,24),
+                    BookId = 3
+                    
+                }
+            );
+
+            context.Genres.AddRange(
+                new Genre{
+                    Name = "Personal Growth"
+                },
+                new Genre{
+                    Name = "Science Fiction"
+                },
+                new Genre{
+                    Name = "Romance"
+                }
+            );
 
             context.Books.AddRange(
                 new Book

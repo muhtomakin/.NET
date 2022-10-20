@@ -4,8 +4,9 @@ using System.Linq;
 using WebApi.DBOperations;
 using WebApi.Common;
 using AutoMapper;
+using WebApi.Entities;
 
-namespace WebApi.BookOperations.AddBook;
+namespace WebApi.Application.BookOperations.AddBook;
 
 public class CreateBookCommand
 {
