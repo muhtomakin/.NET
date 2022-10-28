@@ -11,9 +11,9 @@ namespace WebApi.Application.BookOperations.GetById;
 public class GetByIdQuery
 {
     public int BookId { get; set; }
-    private readonly BookStoreDbContext _dbContext;
+    private readonly IBookStoreDbContext _dbContext;
     private readonly IMapper _mapper;
-    public GetByIdQuery(BookStoreDbContext dbContext, IMapper mapper)
+    public GetByIdQuery(IBookStoreDbContext dbContext, IMapper mapper)
     {
         _dbContext = dbContext;
         _mapper = mapper;
@@ -23,7 +23,7 @@ public class GetByIdQuery
     {
         var book = _dbContext.Books.Include(x => x.Genre).Where(book => book.Id == BookId).SingleOrDefault();
         if (book is null)
-            throw new InvalidOperationException("Book is not found!");
+            throw new InvalidOperationException("The Book could not found!");
         BookDetailViewModel vm = _mapper.Map<BookDetailViewModel>(book); // new BookDetailViewModel();
         // vm.Title = book.Title;
         // vm.PageCount = book.PageCount;

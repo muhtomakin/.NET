@@ -9,9 +9,9 @@ public class GetAuthorDetail
 {
     public AuthorDetailViewModel Model;
     public int AuthorId { get; set; }
-    private readonly BookStoreDbContext _context;
+    private readonly IBookStoreDbContext _context;
     private readonly IMapper _mapper;
-    public GetAuthorDetail(BookStoreDbContext context, IMapper mapper)
+    public GetAuthorDetail(IBookStoreDbContext context, IMapper mapper)
     {
         _context = context;
         _mapper = mapper;

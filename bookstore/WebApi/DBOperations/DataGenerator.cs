@@ -1,8 +1,5 @@
-using System;
 using Microsoft.EntityFrameworkCore;
 using WebApi.Entities;
-using System.Linq;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace WebApi.DBOperations;
 
@@ -16,6 +13,16 @@ public class DataGenerator
             {
                 return;
             }
+
+            context.Users.AddRange(
+                new User 
+                {
+                    Name = "Thomas",
+                    Surname = "Müller",
+                    Email = "tmüller@gmail.com",
+                    Password = "123456"
+                }
+            );
 
             context.Authors.AddRange(
                 new Author 
