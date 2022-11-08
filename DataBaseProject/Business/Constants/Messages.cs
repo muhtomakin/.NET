@@ -11,19 +11,19 @@ namespace Business.Constants
 {
     public static class Messages
     {
-        public static string ProductAdded = "Ürün eklendi";
-        public static string ProductNameInvalid = "Ürün ismi geçersiz";
-        public static string MaintenanceTime = "Sistem bakımda";
-        public static string ProductListed = "Ürünler listelendi";
-        public static string ProductCountOfCategoryError = "Bir kategoride en fazla 10 ürün olabilir";
-        public static string ProductNameAlreadyExists = "Bu isimde zaten başka bir ürün var";
-        public static string CategoryLimitExceded = "Kategori limiti aşıldığı için yeni ürün eklenemiyor.";
-        public static string AuthorizationDenied = "Yetkiniz yok.";
-        public static string UserRegistered = "Kayıt oldu.";
-        public static string UserNotFound = "Kullanıcı bulunamadı.";
-        public static string PasswordError = "Parola hatası.";
-        public static string SuccessfulLogin = "Başarılı giriş";
-        public static string UserAlreadyExists = "Kullanıcı mevcut";
-        public static string AccessTokenCreated = "Token oluşturuldu.";
+        public static string ProductAdded = "Product is added.";
+        public static string ProductNameInvalid = "Product name is not valid.";
+        public static string MaintenanceTime = "System expended.";
+        public static string ProductListed = "Products are listed.";
+        public static string ProductCountOfCategoryError = "At most be 10 items for each category.";
+        public static string ProductNameAlreadyExists = "Product is already exists.";
+        public static string CategoryLimitExceeded = "Category's limit exceed.";
+        public static string AuthorizationDenied = "YYou do not have authority.";
+        public static string UserRegistered = "User is registered.";
+        public static string UserNotFound = "User could not found.";
+        public static string PasswordError = "Password incorrect.";
+        public static string SuccessfulLogin = "Succesful enter.";
+        public static string UserAlreadyExists = "User is already exists.";
+        public static string AccessTokenCreated = "Token is created.";
     }
 }

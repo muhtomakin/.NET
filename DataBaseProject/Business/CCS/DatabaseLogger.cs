@@ -4,7 +4,7 @@
     {
         public void Log()
         {
-            Console.WriteLine("Veritabanına loglandı");
+            Console.WriteLine("Database is logged.");
         }
     }
 }

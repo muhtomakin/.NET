@@ -12,7 +12,7 @@ namespace WebAPI.Controllers
     public class ProductsController : ControllerBase
     {
         // Loosely coupled
-        //naming convention
+        // naming convention
         // IoC Container -- Inversion of Control
         IProductService _productService;
 
@@ -24,7 +24,7 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            //Swagger
+            // Swagger
             // Dependency chain -- 
             var result = _productService.GetAll();
             if (result.Success)
