@@ -1,31 +1,33 @@
-using DataAccess.Abstract;
-using Entities.Concrete;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using Microsoft.EntityFrameworkCore;
 using Core.DataAccess.EntityFramework;
+using Entities.Concrete;
+using DataAccess.Abstract;
+using System.Collections.Generic;
 using Entities.DTOs;
+using System.Linq;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCarDal : EfEntityRepositoryBase<Car, NorthwindContext>, ICarDal
+    public class EfRentalDal : EfEntityRepositoryBase<Rental, NorthwindContext>, IRentalDal
     {
-        public List<CarDetailDto> GetCarDetailDtos()
+        public List<RentalDetailDto> GetRentalDetailDtos()
         {
             using (NorthwindContext context = new NorthwindContext())
             {
                 var result = from c in context.Cars
                              join b in context.Brands on c.BrandId equals b.BrandId
                              join a in context.Colors on c.ColorId equals a.ColorId
-                             select new CarDetailDto
+                             join r in context.Rentals on c.CarId equals r.CarId
+                             select new RentalDetailDto
                              {
+                                 RentalId = r.Id,
                                  CarId = c.CarId,
+                                 BrandId = b.BrandId,
                                  BrandName = b.BrandName,
                                  ColorName = a.ColorName,
-                                 DailyPrice = c.DailyPrice,
-                                 ModelYear = c.ModelYear
+                                 ModelName = c.ModelName,
+                                 RentDate = r.RentDate,
+                                 ReturnDate = r.ReturnDate
                              };
-                             
                 return result.ToList();
             }
         }

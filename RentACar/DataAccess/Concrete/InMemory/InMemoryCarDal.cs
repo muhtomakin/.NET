@@ -3,6 +3,7 @@ using Entities.Concrete;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Entities.DTOs;
 
 namespace DataAccess.Concrete.InMemory
 {
@@ -59,6 +60,11 @@ namespace DataAccess.Concrete.InMemory
         }
 
         public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CarDetailDto> GetCarDetailDtos()
         {
             throw new NotImplementedException();
         }
