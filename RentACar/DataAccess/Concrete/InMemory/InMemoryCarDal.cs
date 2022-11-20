@@ -1,24 +1,26 @@
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Entities.DTOs;
 
 namespace DataAccess.Concrete.InMemory
 {
     public class InMemoryCarDal : ICarDal
     {
-        List<Car> _cars;
+        private List<Car> _cars;
 
         public InMemoryCarDal()
         {
             _cars = new List<Car>
             {
-                new Car{CarId=1, BrandId=2, ColorId=1, ModelYear=2017, Description="Gasoline Manual", DailyPrice=1200, ModelName="Audi"},
-                new Car{CarId=2, BrandId=1, ColorId=1, ModelYear=2020, Description="Diesel Automatic", DailyPrice=2000, ModelName="Volswagen"},
-                new Car{CarId=3, BrandId=1, ColorId=3, ModelYear=2019, Description ="Gasoline Automatic", DailyPrice =1900, ModelName="BMW"},
-                new Car{CarId=4, BrandId=3, ColorId=2, ModelYear=2022, Description="Diesel Automatic", DailyPrice=2500, ModelName="Mercedes-Benz"}
+                new Car{Id = 1, BrandId = 1, DailyPrice = 150, ModelYear = 2021, Description = "Mavi BMW"},
+                new Car{Id = 2, BrandId = 2, DailyPrice = 150, ModelYear = 2021, Description = "Beyaz Audi"},
+                new Car{Id = 3, BrandId = 3, DailyPrice = 150, ModelYear = 2021, Description = "Gri Volvo"},
+                new Car{Id = 4, BrandId = 5, DailyPrice = 150, ModelYear = 2021, Description = "Beyaz Mercedes"},
+                new Car{Id = 5, BrandId = 5, DailyPrice = 150, ModelYear = 2021, Description = "Kırmızı Mercedes"}
             };
         }
 
@@ -27,31 +29,10 @@ namespace DataAccess.Concrete.InMemory
             _cars.Add(car);
         }
 
-        public void Update(Car car)
-        {
-            Car updatedCar = _cars.SingleOrDefault(x => x.CarId == car.CarId);
-            updatedCar.BrandId = car.BrandId;
-            updatedCar.ColorId = car.ColorId;
-            updatedCar.DailyPrice = car.DailyPrice;
-            updatedCar.Description = car.Description;
-            updatedCar.ModelName = car.ModelName;
-            updatedCar.ModelYear = car.ModelYear;
-        }
-
         public void Delete(Car car)
         {
-            Car deletedCar = _cars.SingleOrDefault(x => x.CarId == car.CarId);
-            _cars.Remove(deletedCar);
-        }
-
-        public List<Car> GetAll()
-        {
-            return _cars;
-        }
-
-        public List<Car> GetById(int id)
-        {
-            return _cars.Where(c => c.CarId == id).ToList();
+            Car carToDelete = _cars.SingleOrDefault(c => c.Id == car.Id);
+            _cars.Remove(carToDelete);
         }
 
         public Car Get(Expression<Func<Car, bool>> filter)
@@ -59,12 +40,35 @@ namespace DataAccess.Concrete.InMemory
             throw new NotImplementedException();
         }
 
+        public List<Car> GetAll()
+        {
+            return _cars;
+        }
+
         public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
         {
             throw new NotImplementedException();
         }
 
-        public List<CarDetailDto> GetCarDetailDtos()
+        public Car GetById(Car car)
+        {
+            return _cars.SingleOrDefault(c => c.Id == car.Id);
+        }
+
+        public List<CarDetailDto> GetAllCarsDetails()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Car car)
+        {
+            Car carToUpdate = _cars.SingleOrDefault(c => c.Id == car.Id);
+            carToUpdate.ModelYear = car.ModelYear;
+            carToUpdate.DailyPrice = car.DailyPrice;
+            carToUpdate.Description = car.Description;
+        }
+
+        public List<CarDetailDto> GetCarDetailDtos(Expression<Func<Car, bool>> filter)
         {
             throw new NotImplementedException();
         }
