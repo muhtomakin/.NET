@@ -22,8 +22,7 @@ builder.Services.AddSwaggerGen();
 //Autofac, Ninject, CastleWindsor, StructureMap, LightInject, DryInject --> IoC Container
 //AOP
 //Postsharp
-//builder.Services.AddSingleton<IProductService, ProductManager>();
-//builder.Services.AddSingleton<IProductDal, EfProductDal>();
+
 var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -55,6 +54,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.ConfigureCustomExceptionMiddleware();
+
+app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
 
 app.UseHttpsRedirection();
 
